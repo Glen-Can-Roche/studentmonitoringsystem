@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Monitoring System</title>
+</head>
+<body>
+  <h1>Upload Classroom Video</h1>
+  <form action="/process" method="post" enctype="multipart/form-data">
+    <label>Select Mode:</label>
+    <select name="mode">
+      <option value="normal">Normal (Attentiveness)</option>
+      <option value="exam">Exam (Cheating Detection)</option>
+    </select><br><br>
+    <input type="file" name="video" required><br><br>
+    <input type="submit" value="Upload and Analyze">
+  </form>
+  {% if report_link %}
+    <p><a href="{{ report_link }}">Download Report</a></p>
+  {% endif %}
+</body>
+</html>

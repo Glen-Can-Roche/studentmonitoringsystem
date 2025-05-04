@@ -1,0 +1,7 @@
+flask
+opencv-python
+pandas
+numpy
+mediapipe
+face-recognition
+openpyxl
