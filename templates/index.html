@@ -1,21 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Student Monitoring System</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Video Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f6fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2f3640;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="file"], select {
+            margin-bottom: 20px;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #273c75;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #192a56;
+        }
+
+        .report-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #44bd32;
+            text-decoration: none;
+        }
+
+        .report-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <h1>Upload Classroom Video</h1>
-  <form action="/process" method="post" enctype="multipart/form-data">
-    <label>Select Mode:</label>
-    <select name="mode">
-      <option value="normal">Normal (Attentiveness)</option>
-      <option value="exam">Exam (Cheating Detection)</option>
-    </select><br><br>
-    <input type="file" name="video" required><br><br>
-    <input type="submit" value="Upload and Analyze">
-  </form>
-  {% if report_link %}
-    <p><a href="{{ report_link }}">Download Report</a></p>
-  {% endif %}
+    <div class="container">
+        <h1>Video Attendance System</h1>
+        <form action="/process" method="post" enctype="multipart/form-data">
+            <label for="video">Upload Video:</label>
+            <input type="file" name="video" id="video" required />
+
+            <label for="mode">Select Mode:</label>
+            <select name="mode" id="mode">
+                <option value="normal">Normal</option>
+                <option value="exam">Exam</option>
+            </select>
+
+            <button type="submit">Process</button>
+        </form>
+
+        {% if report_link %}
+            <a class="report-link" href="{{ report_link }}" target="_blank">Download Report</a>
+        {% endif %}
+    </div>
 </body>
 </html>
+
